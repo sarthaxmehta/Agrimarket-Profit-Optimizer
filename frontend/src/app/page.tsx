@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     // Using 127.0.0.1 instead of localhost to prevent IPv6 binding issues that might cause Failed to fetch
-    fetch("http://127.0.0.1:8000/locations")
+    fetch("http://127.0.0.1:8001/locations")
       .then(res => res.json())
       .then(data => setLocations(data))
       .catch(err => {
@@ -26,7 +26,7 @@ export default function Home() {
     setError("");
     setResults(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/predict_best_market", {
+      const res = await fetch("http://127.0.0.1:8001/predict_best_market", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, quantity_kg: Number(formData.quantity_kg) })
